@@ -8,9 +8,12 @@ public class BiToDecimal {
          *  값을 계산하여 answer에 더해준 다음 삭제
          *  -> 남은 숫자 중 다시 오른쪽 맨 끝자리를 판별, 삭제하는 작업 반복
          */
+
         int bi = 1011101; //2^6 + 2^4 + 2^3 + 2^2 + 2^0 = 93 -> 2^0부터 계산
         int answer = 0;
         int num = 1;
+
+        //방법1
         while (bi > 0) {
             if (bi % 2 == 1) { //bi의 마지막 자리 수가 1이라면
                 //2^n을 더해줌
@@ -22,5 +25,19 @@ public class BiToDecimal {
 
         }
         System.out.println(answer);
+
+        //방법2
+        int input = 101110; //
+        int di = 1;
+        int sum = 0;
+        while(true) {
+            if(input == 0) break;
+            else {
+                sum = sum + input%10 * di;
+                di = di*2;
+                input = input/10;
+            }
+        }
+        System.out.printf("%d", sum);
     }
 }
