@@ -29,4 +29,8 @@ bin/
 ### Mac OS ###
 .DS_Store
 
+
+### User Custom Ignore ###
 sepoa/
+
+iteration/TimesTable.java
