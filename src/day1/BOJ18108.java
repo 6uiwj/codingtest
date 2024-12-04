@@ -2,10 +2,11 @@ package day1;
 
 import java.util.Scanner;
 
-public class BOJ10926 {
+public class BOJ18108 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String a = scanner.nextLine();
-        System.out.println(a+"??!");
+        int a = scanner.nextInt();
+
+        System.out.println(a-543);
     }
 }
