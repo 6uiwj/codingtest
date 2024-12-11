@@ -1,0 +1,25 @@
+package array;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
+import java.util.stream.Collectors;
+
+public class BOJ10811_1 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int n = Integer.parseInt(st.nextToken());
+        int m = Integer.parseInt(st.nextToken());
+        List<Integer> busket = new ArrayList<>();
+
+        for(int i = 1; i<=n; i++){
+            busket.add(i);
+        }
+
+        List<Integer> sorted = busket.stream().sorted((a, b)-> b-a).collect(Collectors.toList());
+    }
+}
