@@ -20,8 +20,6 @@ public class BOJ2745 {
 
             d1 *= d;
         }
-
         System.out.println(num);
     }
-
 }
