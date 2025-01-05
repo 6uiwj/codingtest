@@ -18,6 +18,7 @@ public class BOJ2798 {
         for (int i= 0;i< n - 2; i++ ){
             for (int j=i + 1; j< n -1; j++) {
                 for (int k= j + 1; k< n; k++) {
+                    //여기서 정수로 변환하는 작업이 메모리소모가 큼
                     ans = Integer.parseInt(b[i])+ Integer.parseInt(b[j])+ Integer.parseInt(b[k]);
                     if(m-ans>=0 && m-ans<cr){
                         cr=m-ans;
