@@ -12,21 +12,20 @@ public class BOJ24313 {
         int a0 = Integer.parseInt(t[1]);
         int c = Integer.parseInt(br.readLine());
         int n0 = Integer.parseInt(br.readLine());
-        int i = 1;
-        int f = a1*i+a0;
-        int g = i;
-        int ans = 1;
-        if(n0==1) {
-            if(f<=c*g) {
+        int f = a1*n0+a0;
+        int g = n0*c;
 
+            if(f<=g) {
+                if (c - a1 > 0) System.out.println(1);
+                else if (c - a1 == 0) {
+                    if (a0 <= 0) System.out.println(1);
+                    else System.out.println(0);
+                }
+                else System.out.println(0);
             }
-        }
-        while(i<n0) {
-            if (f <= c * g) ans *= 0;
-            else ans *= 1;
-            i++;
-        }
+            else System.out.println(0);
 
-        System.out.println(ans);
+
+
     }
 }
