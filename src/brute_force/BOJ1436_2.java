@@ -26,7 +26,7 @@ public class BOJ1436_2 {
                     //끝자리가 6일 때
                     //while (t%10==6 && t>999) {
                     t=-666;
-                    while(String.valueOf(t).contains("666") &&t%10==6)
+                    while(String.valueOf(t).contains("666") &&t%10==6) {
                         if(!String.valueOf(t).contains("6666")) break;
                         t=t/10; //26666 //666
                         d++; //1
