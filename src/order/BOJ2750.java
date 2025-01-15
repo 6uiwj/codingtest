@@ -9,7 +9,7 @@ public class BOJ2750 {
         for(int i = 0; i<n; i++) {
             num[i] = readInt();
         }
-
+    //선택정렬
         for(int i=0; i<n-1; i++) { //52341  //0
             for(int j =i+1; j<n; j++) {
                 if(num[i]>num[j]) {
