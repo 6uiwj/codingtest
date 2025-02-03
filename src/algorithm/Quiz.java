@@ -61,35 +61,37 @@ public class Quiz {
         quiz.put("분실한 정보기기의 데이터를 원격으로 삭제하고 사용을 중지시키는 기능","킬 스위치");
         quiz.put("중요 정보를 보호하기 위해 별도의 독립적인 보안 구역을 두는 하드웨어 기반의 보안 기술","트러스트존(TrustZone)");
 
-        int size = quiz.size(); //3
-        List<String > keyList = new ArrayList<>(quiz.keySet());
+        int size = quiz.size(); //Map에 퀴즈 목록을 담고, 이 Map의 크기를 가져옴
+        List<String > keyList = new ArrayList<>(quiz.keySet()); //Map에서 키만 가져와 list에 담음
         int randNum = 0;
-        String subject = "해킹 기법";
+        String subject = "해킹 기법"; //퀴즈 주제
         System.out.println(subject+"에 관한 퀴즈 프로그램입니다. 풀어볼 퀴즈 수를 숫자로 입력해주세요. " +
-                "총 문제 수는 "+quiz.size()+"문제입니다.");
+                "총 문제 수는 "+quiz.size()+"문제입니다."); //안내 comment
         Scanner scanner = new Scanner(System.in);
+        int quizNum = scanner.nextInt(); //풀 퀴즈 수
 
-        int quizNum = scanner.nextInt();
         int temp[] = new int[quizNum];
         scanner.nextLine();
         System.out.println("퀴즈를 시작합니다. \n");
-        for(int i = 0; i<quizNum; i++) {
-            randNum = (int)floor(Math.random()*size);
-            temp[i]=randNum;
-            int count = i;
-            for(int j=0;j<i;j++) {
+
+        //랜덤하게 문제 출제하기 (Map으로 문제와 정답을 미리 저장해 둠)
+        for(int i = 0; i < quizNum; i++) {
+            randNum = (int)floor(Math.random()*size); //퀴즈 개수만큼 랜덤한 숫자 뽑기
+            temp[i] = randNum; //중복 방지 - temp 배열에 랜덤 숫자를 넣기
+            int count = i; //현재 문제의 index 기록
+
+            for(int j = 0; j < i; j++) { //이전 출제된 문제에 동일한 문제가 있는지 확인
                 if (i != 0 && temp[i] == temp[j]) {
-                    i--;
+                    i--; //동일한 문제가 있다면 다시 랜덤으로 문제 고르러 감!!
                     continue;
                 }
             }
             if (count != i) continue;
-            String question = keyList.get(randNum);
-            System.out.print(i+1+". ");
-            System.out.println(question + "은(는) 무엇인가요?");
+            String question = keyList.get(randNum); //문제 가져오기
+            System.out.print(i+1 + ". "); //문제 번호
+            System.out.println(question + "은(는) 무엇인가요?"); //문제 출력
 
             scanner.nextLine();
-
             System.out.println("정답은 \"" + quiz.get(question) + "\" 입니다.\n");
         }
         System.out.println("퀴즈를 종료합니다.");
