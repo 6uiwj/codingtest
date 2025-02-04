@@ -3,6 +3,7 @@ package brute_force;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class BOJ19532_2 {
     public static void main(String[] args) throws IOException {
@@ -15,7 +16,6 @@ public class BOJ19532_2 {
         int e = Integer.parseInt(input[4]);
         int f = Integer.parseInt(input[5]);
         int n = a * e - b * d;
-
         int x = (c * e - b * f) / n;
         int y = (a * f - c * d) / n;
         System.out.println(x + " " + y);
