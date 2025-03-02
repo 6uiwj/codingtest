@@ -1,6 +1,6 @@
 package order;
 
-import java.util.Arrays;
+import java.io.IOException;
 
 public class QuickSort {
 
@@ -36,13 +36,37 @@ public class QuickSort {
             arr[j] = temp;
         }
 
-        public static void main(String[] args) {
-            int[] arr = {3, 1, 4, 1, 5, 9, 2};
-            System.out.println("정렬 전: " + Arrays.toString(arr));
+        private static int readInt() throws IOException {
+            int out = 0;
+            Boolean isNegative = false;
+
+            while(true) {
+                int n = System.in.read();
+                if(n<= 32) return isNegative ? out*(-1) : out;
+                else if(n == '-') isNegative = true;
+                else out = (out<<3) + (out<<1) + (n-'0');
+            }
+
+        }
+
+        public static void main(String[] args) throws IOException {
+           // BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+           // int n = Integer.parseInt(br.readLine());
+            int n = readInt();
+            int[] arr = new int[n];
+            for(int i = 0; i < n; i++) {
+               // arr[i] = Integer.parseInt(br.readLine());
+                arr[i] = readInt();
+            }
+
+           // System.out.println("정렬 전: " + Arrays.toString(arr));
 
             quickSort(arr, 0, arr.length - 1);
 
-            System.out.println("정렬 후: " + Arrays.toString(arr));
+            //System.out.println(Arrays.toString(arr));
+            for(int sorted : arr) {
+                System.out.println(sorted);
+            }
         }
     }
 
