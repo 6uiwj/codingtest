@@ -7,6 +7,8 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+
         int n = Integer.parseInt(br.readLine());
         int[][] coords = new int[n][2];
 
@@ -20,9 +22,10 @@ public class Main {
             if (a[0] == b[0]) return a[1] - b[1];
             return a[0] - b[0];
         });
-        
-        for(int i = 0; i < n; i++){
-            System.out.println(coords[i][0] + " " + coords[i][1]);;
+        for (int i = 0; i < coords.length; i++) {
+            sb.append(coords[i][0]).append(" ").append(coords[i][1]).append("\n");
         }
+        System.out.print(sb);
     }
+    
 }
