@@ -6,6 +6,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
         int n = readInt();
         int[][] coords = new int[n][2];
+        StringBuilder sb = new StringBuilder();
+
         for(int i = 0; i < n; i++){
             coords[i][0] = readInt();
             coords[i][1] = readInt();
@@ -20,9 +22,10 @@ public class Main {
             });
 
         for(int[] row : coords){
-            System.out.println(row[0] + " " + row[1]);
+            sb.append(row[0] + " " + row[1]+"\n");
         }
-        
+        System.out.println(sb.toString());
+
 
     }
 
