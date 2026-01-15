@@ -1,3 +1,4 @@
+import java.awt.Point;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -5,27 +6,29 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         int n = readInt();
-        int[][] coords = new int[n][2];
         StringBuilder sb = new StringBuilder();
 
+        Point[] points = new Point[n];
+        int x; int y;
         for(int i = 0; i < n; i++){
-            coords[i][0] = readInt();
-            coords[i][1] = readInt();
+            x  = readInt();
+            y  = readInt();
+            points[i] = new Point(x, y);
 
         }
-        Arrays.sort(coords, (a,b)->
-            {
-                if (a[1] != b[1]) {
-                    return Integer.compare(a[1], b[1]);
-                }
-                return Integer.compare(a[0], b[0]);
-            });
+        
+        Arrays.sort(points, (p1, p2) -> {
+            if (p1.y != p2.y) {
+                return Integer.compare(p1.y, p2.y); 
+            }
+            return Integer.compare(p1.x, p2.x);     
+        });
 
-        for(int[] row : coords){
-            sb.append(row[0] + " " + row[1]+"\n");
+        for (Point p : points) {
+            sb.append(p.x + " " + p.y+"\n");
         }
+        
         System.out.println(sb.toString());
-
 
     }
 
