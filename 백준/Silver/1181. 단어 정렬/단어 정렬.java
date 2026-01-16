@@ -1,11 +1,5 @@
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.io.*;
+import java.util.*;
 
 public class Main {
 
@@ -13,17 +7,20 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
         int n = Integer.parseInt(br.readLine());
-        List<String> words = new ArrayList<>();
+        String[] words = new String[n];
+
         for(int i = 0; i < n; i++){
-            words.add(br.readLine());
+            words[i] = br.readLine();
+
         }
 
-        words = words.stream()
+        words = Arrays.stream(words)
             .distinct()
             .sorted(
                 Comparator.comparingInt(String::length)
             .thenComparing(String::compareTo))
-                    .collect(Collectors.toList());
+            .toArray(String[]::new);
+        ;
 
 
         for(String word : words){
