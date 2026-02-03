@@ -20,6 +20,10 @@ public class Main {
         while (true) {
             boolean isPrime = true;
             for (long i = 3; i * i <= num; i += 2) {
+                if(num % 2 == 0 || num % 3 == 0) {
+                    isPrime = false;
+                    break;
+                }
                 if (num % i == 0) {
                     isPrime = false;
                     break;
