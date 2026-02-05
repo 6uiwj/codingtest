@@ -1,51 +1,89 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
+    static int[] myArr;
+    static int[] checkArr;
+    static int checkSecret;
+
     public static void main(String[] args) throws IOException {
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int S = Integer.parseInt(st.nextToken());
+        int P = Integer.parseInt(st.nextToken());
+        int Result = 0;
+        checkArr = new int[4];
+        myArr = new int[4];
+        char[] A = new char[S];
+        checkSecret = 0;
 
-            String[] sp = br.readLine().split(" ");
-            int s = Integer.parseInt(sp[0]);
-            int p = Integer.parseInt(sp[1]);
-            String pw = br.readLine();
-            String[] gene = br. readLine().split(" ");
-            int[] alpha = new int[4];
-            int a = Integer.parseInt(gene[0]);
-            int c = Integer.parseInt(gene[1]);
-            int g = Integer.parseInt(gene[2]);
-            int t = Integer.parseInt(gene[3]);
-
-            int i = 0;
-            int count = 0;
-            String subPw = pw.substring(0,p);
-            int pointer = 0;
-        
-        while(i<p) {
-                if(subPw.charAt(i)=='A') alpha[0]++;
-                if(subPw.charAt(i)=='C') alpha[1]++;
-                if(subPw.charAt(i)=='G') alpha[2]++;
-                if(subPw.charAt(i)=='T') alpha[3]++;
-                i++;
+        A= br.readLine().toCharArray();
+        st = new StringTokenizer(br.readLine());
+        for(int i=0; i<4; i++) {
+            checkArr[i] = Integer.parseInt(st.nextToken());
+            if(checkArr[i] ==0 ) {
+                checkSecret++;
+            }
         }
-            if(alpha[0]>=a && alpha[1]>=c && alpha[2]>=g && alpha[3]>=t) count++; //1
 
-
-            while(i<s) {
-                if(pw.charAt(i)=='A') alpha[0]++;
-                if(pw.charAt(i)=='C') alpha[1]++;
-                if(pw.charAt(i)=='G') alpha[2]++;
-                if(pw.charAt(i)=='T') alpha[3]++;
-                if(pw.charAt(pointer)=='A') alpha[0]--;
-                if(pw.charAt(pointer)=='C') alpha[1]--;
-                if(pw.charAt(pointer)=='G') alpha[2]--;
-                if(pw.charAt(pointer)=='T') alpha[3]--; //TA
-                if(alpha[0]>=a && alpha[1]>=c && alpha[2]>=g && alpha[3]>=t) count++;
-                i++;
-                pointer++;
+        for(int i =0; i<P; i++) {
+            Add(A[i]);
         }
-            System.out.println(count);
 
+        if(checkSecret ==4 ) Result++;
+
+        for(int i=P; i<S; i++) {
+            int j = i-P;
+            Add(A[i]);
+            Remove(A[j]);
+            if(checkSecret ==4 ) Result++;
+        }
+
+        System.out.println(Result);
+    }
+
+    private static void Remove(char c) {
+        switch (c) {
+            case 'A':
+                if(myArr[0] == checkArr[0]) checkSecret--;
+                myArr[0]--;
+                break;
+            case 'C':
+                if(myArr[1] == checkArr[1]) checkSecret--;
+                myArr[1]--;
+                break;
+            case 'G':
+                if(myArr[2] == checkArr[2]) checkSecret--;
+                myArr[2]--;
+                break;
+            case 'T':
+                if(myArr[3] == checkArr[3]) checkSecret--;
+                myArr[3]--;
+                break;
+        }
+    }
+
+    private static void Add(char c) {
+        switch (c) {
+            case 'A':
+                myArr[0]++;
+                if(myArr[0] == checkArr[0]) checkSecret++;
+                break;
+            case 'C':
+                myArr[1]++;
+                if(myArr[1] == checkArr[1]) checkSecret++;
+                break;
+            case 'G':
+                myArr[2]++;
+                if(myArr[2] == checkArr[2]) checkSecret++;
+                break;
+            case 'T':
+                myArr[3]++;
+                if(myArr[3] == checkArr[3]) checkSecret++;
+                break;
+
+        }
     }
 }
