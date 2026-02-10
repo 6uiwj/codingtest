@@ -10,15 +10,10 @@ public class Main {
         for(int i = 0; i < N; i++) {
             cards.add(i+1);
         }
-        int i = 0;
-        int size = 0;
+
         while(cards.size() > 1) {
-            int target = cards.peek();
                 cards.poll();
-            if(i%2!=0) {
-                cards.add(target);
-            }
-            i++;
+                cards.add(cards.poll());
         }
         System.out.println(cards.peek());
     }
